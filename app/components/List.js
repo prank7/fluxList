@@ -9,9 +9,11 @@ var List = React.createClass({
           <span>
             {item}
           </span>
+          <span className="pull-right glyphicon glyphicon-remove" onClick={this.props.remove.bind(null, index)}>
+          </span>
         </li>
 			);
-		});
+		}.bind(this));
 
 		return(
 			<div>

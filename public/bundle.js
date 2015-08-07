@@ -20466,13 +20466,16 @@
 		handleAddItem: function(newItem){
 			todoActions.addItem(newItem);
 		},
+		handleRemoveItem: function(index){
+			todoActions.removeItem(index);
+		},
 		render: function() {
 			return(
 				React.createElement("div", {className: "col-md-6 col-md-offset-3"}, 
 					React.createElement("div", {className: "col-sm-12"}, 
 						React.createElement("h3", {className: "text-center"}, "List Items"), 
 							React.createElement(AddItem, {add: this.handleAddItem}), 
-							React.createElement(List, {items: this.state.list})
+							React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem})
 					)
 				)
 			)
@@ -20520,10 +20523,12 @@
 					React.createElement("li", {key: index, className: "list-group-item"}, 
 	          React.createElement("span", null, 
 	            item
+	          ), 
+	          React.createElement("span", {className: "pull-right glyphicon glyphicon-remove", onClick: this.props.remove.bind(null, index)}
 	          )
 	        )
 				);
-			});
+			}.bind(this));
 
 			return(
 				React.createElement("div", null, 
@@ -20555,6 +20560,10 @@
 
 	var addItem = function(item){
 		_store.list.push(item)
+	};
+
+	var removeItem = function(index){
+		_store.list.splice(index, 1)
 	}
 
 
@@ -20579,6 +20588,9 @@
 				addItem(action.data);
 				todoStore.emit(CHANGE_EVENT);
 				break;
+			case appConstants.REMOVE_ITEM:
+				removeItem(action.data);
+				// todoStore.emit(CHANGE_EVENT);
 			default: 
 				return true;
 		}
@@ -20939,7 +20951,8 @@
 /***/ function(module, exports) {
 
 	var appConstants = {
-		ADD_ITEM: "ADD_ITEM"
+		ADD_ITEM: "ADD_ITEM",
+		REMOVE_ITEM: "REMOVE_ITEM"
 	};
 
 	module.exports = appConstants;
@@ -21264,6 +21277,12 @@
 			AppDispatcher.handleAction({
 				actionType: appConstants.ADD_ITEM,
 				data: item
+			})
+		},
+		removeItem: function(index){
+			AppDispatcher.handleAction({
+				actionType: appConstants.REMOVE_ITEM,
+				data: index
 			})
 		}
 	}

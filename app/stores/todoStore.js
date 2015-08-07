@@ -12,6 +12,10 @@ var _store = {
 
 var addItem = function(item){
 	_store.list.push(item)
+};
+
+var removeItem = function(index){
+	_store.list.splice(index, 1)
 }
 
 
@@ -36,6 +40,9 @@ AppDispatcher.register(function(payload){
 			addItem(action.data);
 			todoStore.emit(CHANGE_EVENT);
 			break;
+		case appConstants.REMOVE_ITEM:
+			removeItem(action.data);
+			todoStore.emit(CHANGE_EVENT);
 		default: 
 			return true;
 	}
