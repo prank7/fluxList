@@ -12,7 +12,7 @@ var ListContainer = React.createClass({
 	},
 	componentDidMount: function(){
     todoStore.addChangeListener(this._onChange);
-  },
+    },
   componentWillUnmount: function(){
     todoStore.removeChangeListener(this._onChange);
   },
@@ -27,13 +27,16 @@ var ListContainer = React.createClass({
 	handleRemoveItem: function(index){
 		todoActions.removeItem(index);
 	},
+	handleEditItem: function(index, editItem) {
+		todoActions.editItem(index, editItem);
+	},
 	render: function() {
 		return(
 			<div className="col-md-6 col-md-offset-3">
 				<div className="col-sm-12">
 					<h3 className="text-center">List Items</h3>
 						<AddItem add={this.handleAddItem} />
-						<List items={this.state.list} remove={this.handleRemoveItem}/>
+						<List items={this.state.list} remove={this.handleRemoveItem} edit={this.handleEditItem} />
 				</div>
 			</div>
 		)

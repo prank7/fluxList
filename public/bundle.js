@@ -20590,7 +20590,7 @@
 				break;
 			case appConstants.REMOVE_ITEM:
 				removeItem(action.data);
-				// todoStore.emit(CHANGE_EVENT);
+				todoStore.emit(CHANGE_EVENT);
 			default: 
 				return true;
 		}
