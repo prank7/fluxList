@@ -20443,8 +20443,8 @@
 	var React = __webpack_require__(1);
 	var AddItem = __webpack_require__(158);
 	var List = __webpack_require__(159);
-	var todoStore = __webpack_require__(160);
-	var todoActions = __webpack_require__(167);
+	var todoStore = __webpack_require__(161);
+	var todoActions = __webpack_require__(168);
 
 	var ListContainer = React.createClass({displayName: "ListContainer",
 		getInitialState: function(){
@@ -20454,7 +20454,7 @@
 		},
 		componentDidMount: function(){
 	    todoStore.addChangeListener(this._onChange);
-	  },
+	    },
 	  componentWillUnmount: function(){
 	    todoStore.removeChangeListener(this._onChange);
 	  },
@@ -20469,13 +20469,16 @@
 		handleRemoveItem: function(index){
 			todoActions.removeItem(index);
 		},
+		handleEditItem: function(index, editItem) {
+			todoActions.editItem(index, editItem);
+		},
 		render: function() {
 			return(
 				React.createElement("div", {className: "col-md-6 col-md-offset-3"}, 
 					React.createElement("div", {className: "col-sm-12"}, 
 						React.createElement("h3", {className: "text-center"}, "List Items"), 
 							React.createElement(AddItem, {add: this.handleAddItem}), 
-							React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem})
+							React.createElement(List, {items: this.state.list, remove: this.handleRemoveItem, edit: this.handleEditItem})
 					)
 				)
 			)
@@ -20514,30 +20517,38 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(1);
+	var ListItem = __webpack_require__(160);
 
 	var List = React.createClass({displayName: "List",
-		render: function(){
+	  getInitialState: function() {
+	    return {
+	      isEditing: false
+	    }
+	  },
+	  handleEdit: function(){
+	    this.setState({
+	      isEditing: true
+	    })
+	  },
+	  render: function(){
+	    var listItems = this.props.items.map(function(item, index){
+	      return(
+	        // <li key={index} className="list-group-item">
+	        //   {input}
+	        // </li>
+	        React.createElement(ListItem, {item: item, remove: index})
+	      );
+	    }.bind(this));
 
-			var listItems = this.props.items.map(function(item, index){
-				return(
-					React.createElement("li", {key: index, className: "list-group-item"}, 
-	          React.createElement("span", null, 
-	            item
-	          ), 
-	          React.createElement("span", {className: "pull-right glyphicon glyphicon-remove", onClick: this.props.remove.bind(null, index)}
-	          )
+	    return(
+	      React.createElement("div", null, 
+	        React.createElement("ul", {className: "list-group"}, 
+	         listItems
+	         
 	        )
-				);
-			}.bind(this));
-
-			return(
-				React.createElement("div", null, 
-					React.createElement("ul", {className: "list-group"}, 
-					 listItems
-					)
-				)
-			)
-		}
+	      )
+	    )
+	  }
 	});
 
 	module.exports = List;
@@ -20546,63 +20557,103 @@
 /* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(161);
-	var appConstants = __webpack_require__(165);
-	var objectAssign = __webpack_require__(13);
-	var EventEmitter = __webpack_require__(166).EventEmitter;
+	var React = __webpack_require__(1);
 
-	var CHANGE_EVENT = 'change';
+	var ListItem = React.createClass({displayName: "ListItem",
 
-	var _store = {
-		list: []
-	};
-
-
-	var addItem = function(item){
-		_store.list.push(item)
-	};
-
-	var removeItem = function(index){
-		_store.list.splice(index, 1)
-	}
-
-
-	var todoStore = objectAssign({}, EventEmitter.prototype, {
-		addChangeListener: function(callback) {
-			this.on(CHANGE_EVENT, callback);
+		handleSubmit: function(e){
+			if (e.keyCode == 13) {
+				var newItem = this.refs.newItem.getDOMNode().value;
+				this.refs.newItem.getDOMNode().value = '';
+				this.props.add(newItem);
+			}
 		},
+		getInitialState: function() {
+	    return {
+	      isEditing: false
+	    }
+	  },
+	  handleEdit: function(e){
+	    this.setState({
+	      isEditing: true
+	    })
+	    console.log(this.state.isEditing);
+	    e.target.style.backgroundcolor = "red";
+	  },
 
-		removeChangeListener: function(callback) {
-			this.removeListener(CHANGE_EVENT, callback)
-		},
-
-		getList: function() {
-			return _store.list;
-		} 
-	});
-
-	AppDispatcher.register(function(payload){
-		var action = payload.action;
-		switch(action.actionType){
-			case appConstants.ADD_ITEM:
-				addItem(action.data);
-				todoStore.emit(CHANGE_EVENT);
-				break;
-			case appConstants.REMOVE_ITEM:
-				removeItem(action.data);
-				todoStore.emit(CHANGE_EVENT);
-			default: 
-				return true;
+		render: function(){
+			return(
+				React.createElement("div", null, 
+	        React.createElement("span", {onDoubleClick: this.handleEdit}, 
+	          this.props.item
+	        ), 
+	        this.state.isEditing
+		    )
+			)
 		}
 	});
 
-	module.exports = todoStore;
+	module.exports = ListItem;
 
 /***/ },
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Dispatcher = __webpack_require__(162).Dispatcher;
+	var AppDispatcher = __webpack_require__(162);
+	var appConstants = __webpack_require__(166);
+	var objectAssign = __webpack_require__(13);
+	var EventEmitter = __webpack_require__(167).EventEmitter;
+
+	var CHANGE_EVENT = 'change';
+
+	var _store = {
+	  list: []
+	};
+
+	var addItem = function(item){
+	  _store.list.push(item)
+	};
+
+	var removeItem = function(index){
+	  _store.list.splice(index, 1)
+	};
+
+	var todoStore = objectAssign({}, EventEmitter.prototype, {
+	  addChangeListener: function(callback) {
+	    this.on(CHANGE_EVENT, callback);
+	  },
+
+	  removeChangeListener: function(callback) {
+	    this.removeListener(CHANGE_EVENT, callback)
+	  },
+
+	  getList: function() {
+	    return _store.list;
+	  } 
+	});
+
+	AppDispatcher.register(function(payload){
+	  var action = payload.action;
+	  switch(action.actionType){
+	    case appConstants.ADD_ITEM:
+	      addItem(action.data);
+	      todoStore.emit(CHANGE_EVENT);
+	      break;
+	    case appConstants.REMOVE_ITEM:
+	      removeItem(action.data);
+	      todoStore.emit(CHANGE_EVENT);
+	    default: 
+	      return true;
+	  }
+	});
+
+	module.exports = todoStore;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dispatcher = __webpack_require__(163).Dispatcher;
 	var AppDispatcher = new Dispatcher();
 
 	AppDispatcher.handleAction = function (action) {
@@ -20616,7 +20667,7 @@
 
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20628,11 +20679,11 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 */
 
-	module.exports.Dispatcher = __webpack_require__(163)
+	module.exports.Dispatcher = __webpack_require__(164)
 
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -20649,7 +20700,7 @@
 
 	"use strict";
 
-	var invariant = __webpack_require__(164);
+	var invariant = __webpack_require__(165);
 
 	var _lastID = 1;
 	var _prefix = 'ID_';
@@ -20888,7 +20939,7 @@
 
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports) {
 
 	/**
@@ -20947,7 +20998,7 @@
 
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports) {
 
 	var appConstants = {
@@ -20959,7 +21010,7 @@
 
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
@@ -21266,11 +21317,11 @@
 
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var AppDispatcher = __webpack_require__(161);
-	var appConstants = __webpack_require__(165);
+	var AppDispatcher = __webpack_require__(162);
+	var appConstants = __webpack_require__(166);
 
 	var todoActions = {
 		addItem: function(item){
