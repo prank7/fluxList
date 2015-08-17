@@ -19,7 +19,7 @@ var config = {
   entry: {
     landing: entryArrayCreator('landing.jsx'),
     aboutEntry: entryArrayCreator('aboutEntry.jsx'),
-    client: 'webpack-dev-server/client?http://localhost:3001'
+    client: 'webpack-dev-server/client?http://localhost:3000'
   },
   output: {
     publicPath: '/js/',
