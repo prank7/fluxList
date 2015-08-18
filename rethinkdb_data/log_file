@@ -1,0 +1,13 @@
+2015-08-18T19:28:21.266364000 0.231711s notice: Recursively removing directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data/tmp
+2015-08-18T19:28:21.268190000 0.233542s notice: Initializing directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-18T19:28:21.268296000 0.233642s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/Prank/Documents/Projects/fluxList/rethinkdb_data' did not already exist or is empty.)
+2015-08-18T19:28:21.268335000 0.233681s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-18T19:28:21.275090000 0.240437s notice: Running on Darwin 14.5.0 x86_64
+2015-08-18T19:28:21.275149000 0.240494s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-18T19:28:21.514440000 0.479784s info: Automatically using cache size of 1582 MB
+2015-08-18T19:28:21.515630000 0.480975s notice: Listening for intracluster connections on port 29015
+2015-08-18T19:28:21.517461000 0.482806s notice: Listening for client driver connections on port 28015
+2015-08-18T19:28:21.517560000 0.482905s notice: Listening for administrative HTTP connections on port 8080
+2015-08-18T19:28:21.517562000 0.482907s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-18T19:28:21.517565000 0.482910s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-18T19:28:21.517568000 0.482913s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
