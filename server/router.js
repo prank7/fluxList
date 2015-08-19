@@ -1,6 +1,7 @@
 var middleware = require('./config/middleware');
 var thinky = require('./config/database');
 var index = require('./routes/index');
+var profile = require('./routes/profile')
 var apiUser = require('./api/users');
 var auth = require('./auth');
 
@@ -17,6 +18,7 @@ module.exports = function(app) {
   app.use('/', index);
   app.use('/api/users', apiUser);
   app.use('/auth', auth);
+  app.use('/profile', profile)
   app.get('/logout', function(req, res, next) {
     res.send(req.logout());
   });

@@ -11,3 +11,48 @@
 2015-08-18T19:28:21.517562000 0.482907s notice: Listening on addresses: 127.0.0.1, ::1
 2015-08-18T19:28:21.517565000 0.482910s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
 2015-08-18T19:28:21.517568000 0.482913s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-18T22:32:06.704478000 0.329009s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-18T22:32:06.710343000 0.334870s notice: Running on Darwin 14.5.0 x86_64
+2015-08-18T22:32:06.710380000 0.334905s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-18T22:32:06.795473000 0.419999s info: Automatically using cache size of 364 MB
+2015-08-18T22:32:06.796029000 0.420555s notice: Listening for intracluster connections on port 29015
+2015-08-18T22:32:06.797396000 0.421922s notice: Listening for client driver connections on port 28015
+2015-08-18T22:32:06.797489000 0.422015s notice: Listening for administrative HTTP connections on port 8080
+2015-08-18T22:32:06.797498000 0.422023s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-18T22:32:06.797502000 0.422027s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-18T22:32:06.797506000 0.422031s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-18T23:31:31.440778000 3564.878482s notice: Server got SIGINT from pid 2485, uid 501; shutting down...
+2015-08-18T23:31:31.441121000 3564.878825s notice: Shutting down client connections...
+2015-08-18T23:31:31.441401000 3564.879105s notice: All client connections closed.
+2015-08-18T23:31:31.441411000 3564.879115s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-08-18T23:31:31.447402000 3564.885105s notice: Storage engine shut down.
+2015-08-19T09:10:58.339816000 0.009975s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-19T09:10:58.343089000 0.013243s notice: Running on Darwin 14.5.0 x86_64
+2015-08-19T09:10:58.343120000 0.013273s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-19T09:10:58.418994000 0.089147s info: Automatically using cache size of 2177 MB
+2015-08-19T09:10:58.420190000 0.090343s notice: Listening for intracluster connections on port 29015
+2015-08-19T09:10:58.422429000 0.092582s notice: Listening for client driver connections on port 28015
+2015-08-19T09:10:58.422508000 0.092661s notice: Listening for administrative HTTP connections on port 8080
+2015-08-19T09:10:58.422510000 0.092663s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-19T09:10:58.422514000 0.092667s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-19T09:10:58.422520000 0.092673s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-19T19:02:44.457472000 0.009477s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-19T19:02:44.460745000 0.012748s notice: Running on Darwin 14.5.0 x86_64
+2015-08-19T19:02:44.460783000 0.012784s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-19T19:02:44.540168000 0.092169s info: Automatically using cache size of 2486 MB
+2015-08-19T19:02:44.541376000 0.093377s notice: Listening for intracluster connections on port 29015
+2015-08-19T19:02:44.543546000 0.095547s notice: Listening for client driver connections on port 28015
+2015-08-19T19:02:44.543641000 0.095642s notice: Listening for administrative HTTP connections on port 8080
+2015-08-19T19:02:44.543642000 0.095644s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-19T19:02:44.543647000 0.095648s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-19T19:02:44.543650000 0.095651s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-19T22:53:07.471029000 0.010547s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-19T22:53:07.474365000 0.013880s notice: Running on Darwin 14.5.0 x86_64
+2015-08-19T22:53:07.474419000 0.013932s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-19T22:53:07.547795000 0.087308s info: Automatically using cache size of 2349 MB
+2015-08-19T22:53:07.548955000 0.088468s notice: Listening for intracluster connections on port 29015
+2015-08-19T22:53:07.550932000 0.090446s notice: Listening for client driver connections on port 28015
+2015-08-19T22:53:07.551076000 0.090590s notice: Listening for administrative HTTP connections on port 8080
+2015-08-19T22:53:07.551079000 0.090592s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-19T22:53:07.551086000 0.090599s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-19T22:53:07.551089000 0.090603s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b

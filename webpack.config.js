@@ -17,7 +17,8 @@ var entryArrayCreator = function(file) {
 var config = {
   devtool: 'eval',
   entry: {
-    landing: entryArrayCreator('landing.jsx'),
+    homeEntry: entryArrayCreator('components/homeEntry.jsx'),
+    profileEntry: entryArrayCreator('components/profileEntry.jsx'),
     client: 'webpack-dev-server/client?http://localhost:3000'
   },
   output: {

@@ -10,8 +10,8 @@ module.exports = {
   },
   // Google OAuth Details
   google: {
-    clientID: "539462910404-foe1hp9cldrv8ts4209b37ean7jrcb1h.apps.googleusercontent.com",
-    clientSecret: "b1GcU6dt5V6UeIXWgqJ_YI2M",
+    clientID: "fillInTheBlanks",
+    clientSecret: "fillInTheBlanks",
     callbackURL: "/auth/google/callback"
   }
 }
