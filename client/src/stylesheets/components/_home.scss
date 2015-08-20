@@ -30,3 +30,17 @@
 button{
   background-color: #BF2E14;
 }
+
+navbar{
+  @include span-columns(12);
+  background-color: #F1A649;;
+  height: 4em;
+
+  nav{
+    margin-top: 0.3em;
+    @include shift(1);
+    font-size: 2em;
+    color: white;
+  }
+}
+

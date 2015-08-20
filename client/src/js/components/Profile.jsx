@@ -2,19 +2,19 @@ var React = require('react');
 var userStore = require('../stores/userStore');
 var apiUtils = require('../utils/apiUtils');
 var userActions = require('../actions/userActions');
+var ProfileList = require('./profileList.jsx');
+var Header = require('./Header.jsx');
 
 require('./home.scss');
 
 var Profile = React.createClass({
   getInitialState: function() {
-    return {
-      users: userStore.getState()
-    }
+    return userStore.getState()
   },
-
-  componentDidMount: function() {
-    userStore.addChangeListener(this._onChange);
+  
+  componentDidMount: function(){
     this.getUsers();
+    userStore.addChangeListener(this._onChange);
   },
 
   componentWillUnMount: function() {
@@ -26,15 +26,16 @@ var Profile = React.createClass({
   },
 
   getUsers: function(){
-    var storeState = userStore.getState();
     userActions.getAllUsers();
   },
 
   render: function(){
     return(
     <div>
-      Profile
-      <div>hi {this.state} </div>
+      <Header />
+      <div>
+        <ProfileList users={this.state.users} />
+      </div>
     </div>
     );
   }

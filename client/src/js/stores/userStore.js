@@ -9,15 +9,14 @@ var _state = {
   users: []
 }
 
-var setState = function(params) {
-  params = params || {};
-  console.log(params);
-  objectAssign(_state, params);
-  console.log(_state);
+var createAll = function(response) {
+  console.log("response", response);
+  _state.users = response;
 };
 
 var userStore = objectAssign({}, EventEmitter.prototype, {
   getState: function(){
+    console.log("from store",JSON.stringify(_state));
     return _state;
   },
 
@@ -38,7 +37,8 @@ AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
     case appConstants.USER_SENT:
-      setState(action.data);
+      console.log("Hi User")
+      createAll(action.data);
       userStore.emit(CHANGE_EVENT);
       break;
     case appConstants.USER_LOADING:

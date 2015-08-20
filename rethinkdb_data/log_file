@@ -56,3 +56,19 @@
 2015-08-19T22:53:07.551079000 0.090592s notice: Listening on addresses: 127.0.0.1, ::1
 2015-08-19T22:53:07.551086000 0.090599s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
 2015-08-19T22:53:07.551089000 0.090603s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-20T01:01:43.117572000 7715.461505s notice: Server got SIGINT from pid 344, uid 501; shutting down...
+2015-08-20T01:01:43.117871000 7715.461804s notice: Shutting down client connections...
+2015-08-20T01:01:43.118036000 7715.461969s notice: All client connections closed.
+2015-08-20T01:01:43.118043000 7715.461975s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2015-08-20T01:01:43.124883000 7715.468815s notice: Storage engine shut down.
+2015-08-20T10:57:45.310025000 0.320802s notice: Running rethinkdb 2.0.4 (CLANG 6.1.0 (clang-602.0.53))...
+2015-08-20T10:57:45.313617000 0.324390s notice: Running on Darwin 14.5.0 x86_64
+2015-08-20T10:57:45.313658000 0.324429s notice: Loading data from directory /Users/Prank/Documents/Projects/fluxList/rethinkdb_data
+2015-08-20T10:57:45.393694000 0.404465s info: Automatically using cache size of 2275 MB
+2015-08-20T10:57:45.394583000 0.405354s notice: Listening for intracluster connections on port 29015
+2015-08-20T10:57:45.396746000 0.407518s notice: Listening for client driver connections on port 28015
+2015-08-20T10:57:45.396893000 0.407664s notice: Listening for administrative HTTP connections on port 8080
+2015-08-20T10:57:45.396895000 0.407666s notice: Listening on addresses: 127.0.0.1, ::1
+2015-08-20T10:57:45.396900000 0.407671s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2015-08-20T10:57:45.396903000 0.407674s notice: Server ready, "pro_local_mxc" 05a2ac3b-965f-408d-8164-0b080e70ad5b
+2015-08-20T10:57:45.444003000 0.454774s warn: Problem when checking for new versions of RethinkDB: HTTP request to update.rethinkdb.com failed.
