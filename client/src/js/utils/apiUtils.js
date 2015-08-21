@@ -10,7 +10,21 @@ var apiUtils = {
         data: res.body
       })
     });
+  },
+
+  getSession: function(){
+    request.get('/api/user').set('Accept', 'application/json').end(function(err, res) {
+      if (res) {
+        AppDispatcher.handleAction({
+          actionType: appConstants.SESSION_START,
+          data: res.body
+        })
+      } else {
+        return window.location.replace("/");
+      }
+    });
   }
+
 };
 
 module.exports = apiUtils;

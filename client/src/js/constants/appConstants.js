@@ -1,6 +1,11 @@
 var appConstants = {
   USER_LOADING : "USER_LOADING",
-  USER_SENT : "USER_SENT"
+  USER_SENT : "USER_SENT",
+  SESSION_START : "SESSION_START",
+  SESSION_END : "SESSION_END",
+  DO_CREATED: "DO_CREATED",
+  DO_SENT: "DO_SENT",
+  DO_DELETED: "DO_DELETED"
 }
 
 module.exports = appConstants;

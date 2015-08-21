@@ -4,7 +4,7 @@ var User = require('../models/users');
 var router = express.Router();
 
 // GET Profile page
-router.get('/', function(req, res){
+router.get('/', auth.isLoggedIn, function(req, res){
   res.render('profile', {title: "Profile"});
 });
 

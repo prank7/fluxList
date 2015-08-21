@@ -2,7 +2,7 @@
   @include row();
 }
 
-.home{
+.home {
   background-color: #F1A649;
   color: white;
   height: 10em;
@@ -15,7 +15,7 @@
   }
 }
 
-.home-description{
+.home-description {
   @include span-columns(12);
   text-align: center;
   height: 10em;
@@ -27,20 +27,113 @@
   }
 }
 
-button{
+button {
   background-color: #BF2E14;
 }
 
-navbar{
+navbar {
   @include span-columns(12);
-  background-color: #F1A649;;
+  background-color: #F1A649;
   height: 4em;
 
-  nav{
+  nav {
     margin-top: 0.3em;
     @include shift(1);
+    @include span-columns(2);
     font-size: 2em;
     color: white;
   }
+
+  .nav-right {
+    float: right;
+    color: white;
+    display: inline-block;
+
+    span {
+      margin-top: -1.5em;
+      display: inline-block;
+      padding-right: 0.3em;
+      vertical-align: middle;
+    }
+
+    img{
+      line-height: 1em;
+      border-radius: 1em;
+      margin-top: 0.5em;
+    }
+
+    a{
+      color: white;
+      padding: 0em 1.5em;
+    }
+  }
 }
+
+.outer-container{
+  @include outer-container;
+}
+
+.todo-box{
+  padding-top: 2em;
+  @include span-columns(12);
+  text-align: center;
+
+  .do-box{
+    @include span-columns(6);
+    display: block;
+
+    .add-new-do{
+      @include span-columns(12);
+      display: block;
+
+      .do-input {
+        padding: 0.5em;
+        border-color: none;
+        background-color: rgba(255, 211, 186, 0.2);
+        @include span-columns(12);
+      }
+    }
+
+    .do-list{
+      @include span-columns(12);
+      margin-top: 0.5em;
+
+      .do{
+        @include span-columns(12);
+        display: block;
+        margin-top: -0.4em;
+        padding: 0.5em 0em;
+
+        li{
+          @include span-columns(12);
+          border-bottom: 1px solid #9DC59D;
+          list-style: none;
+          text-align: right;
+
+          .pull-left{
+            @include span-columns(10);
+            text-align: left;
+          }
+
+          .pull-right:after{
+            @include span-columns(1);
+            font-weight: bold;
+            content: 'x'; 
+            color: red;
+            text-align: right;
+          }
+
+        }
+      }
+    }
+  }
+
+  .dont-box{
+    @include span-columns(6);
+  }
+}
+
+
+
+
 

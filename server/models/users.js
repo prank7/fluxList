@@ -14,13 +14,24 @@ var User = thinky.createModel("users", {
 
 // Define User API Endpoints
 var UserApi = {
-  // Get all Users
+
+// Get all Users
   getAll: function(callback) {
-    User.orderBy("id").run(function(err, data) {
+    User.orderBy('id').run(function(err, data) {
       callback(err, data);
     });
   },
-  // Check if an user exists or not, if not create
+
+// Get Currently loggedin user
+  getCurrent: function(id, callback) {
+    console.log(id);
+    User.get(id).run(function(err, data) {
+      console.log(err);
+      callback(err, data);
+    });
+  },
+  
+// Check if an user exists or not, if not create
   findOrCreate: function(profile, callback) { 
     User.filter({'google_id': profile.id}).run(function(err, user){
       if (err) {
@@ -47,6 +58,7 @@ var UserApi = {
       }
     })
   }
+
 };
 
 module.exports = UserApi;

@@ -2,7 +2,9 @@ var middleware = require('./config/middleware');
 var thinky = require('./config/database');
 var index = require('./routes/index');
 var profile = require('./routes/profile')
-var apiUser = require('./api/users');
+var apiUsers = require('./api/users');
+var apiUser = require('./api/user');
+var apiDos = require('./api/do');
 var auth = require('./auth');
 
 
@@ -16,7 +18,9 @@ module.exports = function(app) {
 
   // All routes
   app.use('/', index);
-  app.use('/api/users', apiUser);
+  app.use('/api/users', apiUsers);
+  app.use('/api/user', apiUser);
+  app.use('/api/dos', apiDos)
   app.use('/auth', auth);
   app.use('/profile', profile)
   app.get('/logout', function(req, res, next) {

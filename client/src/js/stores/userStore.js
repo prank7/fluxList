@@ -5,18 +5,16 @@ var EventEmitter = require('events').EventEmitter;
 
 var CHANGE_EVENT = 'change';
 
-var _state = {
-  users: []
-}
+var _state = [];
 
 var createAll = function(response) {
   console.log("response", response);
-  _state.users = response;
+  _state = response;
 };
 
 var userStore = objectAssign({}, EventEmitter.prototype, {
   getState: function(){
-    console.log("from store",JSON.stringify(_state));
+    console.log("from store", JSON.stringify(_state));
     return _state;
   },
 
@@ -37,7 +35,6 @@ AppDispatcher.register(function(payload){
   var action = payload.action;
   switch(action.actionType){
     case appConstants.USER_SENT:
-      console.log("Hi User")
       createAll(action.data);
       userStore.emit(CHANGE_EVENT);
       break;

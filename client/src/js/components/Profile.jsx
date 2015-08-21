@@ -1,20 +1,31 @@
 var React = require('react');
 var userStore = require('../stores/userStore');
-var apiUtils = require('../utils/apiUtils');
+var authStore = require('../stores/authStore');
 var userActions = require('../actions/userActions');
+var authActions = require('../actions/authActions');
 var ProfileList = require('./profileList.jsx');
+var TodoBox = require('./TodoBox.jsx');
 var Header = require('./Header.jsx');
 
 require('./home.scss');
 
+function getState(){
+  return {
+    users: userStore.getState(),
+    session: authStore.getSession()
+  }
+}
+
 var Profile = React.createClass({
   getInitialState: function() {
-    return userStore.getState()
+    return getState()
   },
   
   componentDidMount: function(){
     this.getUsers();
+    this.getSession();
     userStore.addChangeListener(this._onChange);
+    authStore.addChangeListener(this._onChange);
   },
 
   componentWillUnMount: function() {
@@ -22,19 +33,24 @@ var Profile = React.createClass({
   },
 
   _onChange: function(){
-    this.setState(userStore.getState())
+    this.setState(getState());
   },
 
   getUsers: function(){
     userActions.getAllUsers();
   },
 
+  getSession: function(){
+    authActions.getSession();
+  },
+
   render: function(){
+    console.log(JSON.stringify(this.state));
     return(
     <div>
-      <Header />
+      <Header session={this.state.session} />
       <div>
-        <ProfileList users={this.state.users} />
+        <TodoBox />
       </div>
     </div>
     );
