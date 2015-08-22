@@ -5,6 +5,7 @@ var request = require('superagent');
 var todoUtils = {
   createDo: function(newDo){
     request.post('/api/dos').send(newDo).set('Accept', 'application/json').end(function(err, res) {
+      console.log(res);
       AppDispatcher.handleAction({
         actionType: appConstants.DO_CREATED,
         data: res.body

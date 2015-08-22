@@ -14,6 +14,11 @@ var doStore = objectAssign({}, EventEmitter.prototype, {
     return dos;
   },
 
+  addNewDo: function(newDo){
+    console.log(newDo);
+    dos.push(newDo);
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -34,7 +39,7 @@ AppDispatcher.register( function(payload) {
     case appConstants.DO_CREATED:
       // console.log("Registering in do store", action.data)
       if (action.data)
-        dos = action.data;
+        doStore.addNewDo(action.data)
       doStore.emit(CHANGE_EVENT);
       break;
     case appConstants.DO_SENT:

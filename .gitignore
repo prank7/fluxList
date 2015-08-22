@@ -5,7 +5,7 @@ node_modules
 npm-debug.log
 
 # Config.js
-# server/config/config.js
+server/config/config.js
 
 # Ignore RethinkDB Data
 rethinkdb_data

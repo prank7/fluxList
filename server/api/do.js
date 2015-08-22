@@ -25,6 +25,7 @@ router.post('/', function(req, res) {
   })
 });
 
+// DELETE /api/dos/id
 router.delete('/:id',function(req, res) {
   Do.destroy(req.params.id, function(err, data) {
     if(err) {

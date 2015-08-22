@@ -30,7 +30,9 @@ var doApi = {
       createdAt: Date()
     }).run(function (err, result) {
       if (result.inserted == 1) {
-        Do.orderBy('createdAt').run(function(err, data) {
+        console.log("data key generated_keys", result.generated_keys[0]);
+        Do.get(result.generated_keys[0]).run(function(err, data) {
+          console.log("create", data)
           callback(err, data);
         });
       }
